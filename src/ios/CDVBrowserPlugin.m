@@ -17,12 +17,6 @@
     _callbackIdPattern = nil;
 }
 
-- (void)onReset
-{
-    [self close:nil];
-}
-
-
 - (void)open:(CDVInvokedUrlCommand*)command
 {
     CDVPluginResult* pluginResult;
