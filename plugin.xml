@@ -40,7 +40,7 @@
             <clobbers target="navigator.browser" />
         </js-module>
         <config-file target="config.xml" parent="/*">
-            <feature name="browser">
+            <feature name="BrowserPlugin">
                 <param name="ios-package" value="CDVBrowserPlugin" />
             </feature>
         </config-file>
