@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="com.overlay.plugins.camera"
+        version="1.0">
+
+    <name>Overlay Camera</name>
+    <description>Overlay Camera Plugin</description>
+    <keywords>overlay,camera</keywords>
+
+    <engines>
+        <engine name="cordova" version=">=3.1.0" />
+    </engines>
+
+    <js-module src="www/js/overlaycamera.js" name="overlayCamera">
+        <clobbers target="navigator.overlayCamera" />
+    </js-module>
+
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="OverlayCamera">
+                <param name="android-package" value="com.overlay.plugins.camera.OverlayCamera"/>
+            </feature>
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.CAMERA" />
+            <uses-feature android:name="android.hardware.camera" android:required="true" />
+            <uses-feature android:name="android.hardware.camera.autofocus" android:required="true" />
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <activity android:name="com.overlay.plugins.camera.OverlayCameraActivity" android:screenOrientation="portrait" android:configChanges="orientation">
+            </activity>
+        </config-file>
+        <source-file src="platforms/android/src/com/overlay/plugins/camera/OverlayCamera.java" target-dir="src/com/overlay/plugins/camera" />
+        <source-file src="platforms/android/src/com/overlay/plugins/camera/OverlayCameraActivity.java" target-dir="src/com/overlay/plugins/camera" />
+        <source-file src="platforms/android/src/com/overlay/plugins/camera/OverlayCameraPreview.java" target-dir="src/com/overlay/plugins/camera" />
+    </platform>
+    <platform name="ios">
+        <js-module src="www/browser.js" name="browser">
+            <clobbers target="navigator.browser" />
+        </js-module>
+        <config-file target="config.xml" parent="/*">
+            <feature name="browser">
+                <param name="ios-package" value="CDVBrowserPlugin" />
+            </feature>
+        </config-file>
+
+        <header-file src="src/ios/CDVBrowserPlugin.h" />
+        <source-file src="src/ios/CDVBrowserPlugin.m" />
+
+    </platform>
+
+</plugin>
