@@ -36,7 +36,7 @@
         <source-file src="platforms/android/src/com/overlay/plugins/camera/OverlayCameraPreview.java" target-dir="src/com/overlay/plugins/camera" />
     </platform>
     <platform name="ios">
-        <js-module src="www/browser.js" name="browser">
+        <js-module src="www/js/browser.js" name="browser">
             <clobbers target="navigator.browser" />
         </js-module>
         <config-file target="config.xml" parent="/*">
